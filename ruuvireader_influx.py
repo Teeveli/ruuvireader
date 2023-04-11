@@ -6,7 +6,7 @@
 ### data[0] = "XX:XX:XX:XX:XX:XX"
 ### data[1] {'data_format': 5, 'humidity': 31.29, 'temperature': 20.8, 'pressure': 1028.03, 'acceleration': 984.6014422089783, 'acceleration_x': -28, 'acceleration_y': 20, 'acceleration_z': 984, 'tx_power': 4, 'battery': 2827, 'movement_counter': 2, 'measurement_sequence_number': 303, 'mac': 'cedbfbf80509'}
 ###
-###--------------------------------------------------------------------------
+###---------------------------------is	-----------------------------------------
 
 
 ## ------------------------
@@ -54,8 +54,8 @@ database = re.search('database="(.*)"', configsData).group(1)
 host = re.search('server="(.*)"', configsData).group(1)
 port = re.search('port="(.*)"', configsData).group(1)
 logfile = re.search('logfile="(.*)"', configsData).group(1)
-dataUpdateInterval = re.search('update_interval="(.*)"', configsData).group(1)
-filelogging = re.search('log_enabled="(.*)"', configsData).group(1)
+dataUpdateInterval = int(re.search('update_interval="(.*)"', configsData).group(1))
+filelogging = bool(re.search('log_enabled="(.*)"', configsData).group(1))
 
 
 #LOG
@@ -109,7 +109,7 @@ def db_insert():
 	# This is to prevent pushing same data to database, in case the sensor dies or has bad reception.
 
 	while True:
-		time.sleep(int(dataUpdateInterval))
+		time.sleep(dataUpdateInterval)
 		# LOG
 		if filelogging == True:
 			logfile.write(str(datetime.utcnow()) + "\n")
