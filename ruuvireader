@@ -1,0 +1,3 @@
+#!/bin/bash
+sleep 10s
+screen -dm bash -c 'python3 /usr/local/bin/ruuvireader_influx.py'

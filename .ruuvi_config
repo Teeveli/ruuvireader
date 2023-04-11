@@ -1,0 +1,18 @@
+#------------------------------------------------------#
+# This configuration file used by ruuvireader scripts. #
+# The parameters should be quite self explanatory.     #
+#------------------------------------------------------#
+
+# Program behaviour
+update_interval="900" # In seconds. Determines how often acquired new data is stored to database. 900 = 15min
+
+# Database connections
+username="dbuser"
+password="password1234"
+database="dbname"
+server="127.0.0.1"
+port="1234"
+
+# Logging
+log_enabled="false" # Logs sensors found and inserted data. Consider this as debug functionality
+logfile="ruuvireader_log.log"
